@@ -15,3 +15,9 @@ Impacts both arrays as memory of both arrays is the same
 Reference type (array) is passed to the method => Address is copied to the parameter.  
 __Hence, Array values change when changed in the method as long as not dereferenced__
 
+```
+Arrays.toString(array)
+```
+prints all the array elements
+
+## Lists and Array Lists - Lecture 81
