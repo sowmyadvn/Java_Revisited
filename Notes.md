@@ -31,11 +31,12 @@ ArrayList is a resize-able array. As ArrayLists can hold objects => For example,
 can be used to search for some value in array list. Time complexity: O(n)
 
 ```
-  arrayList.getIndex("Sowmya");
-``` 
-=> return position of value
-
+  arrayList.getIndex("Sowmya"); //=> return position of value
 ```
-  arrayList.get(0); 
-``` => get value at a position
+```
+  arrayList.get(0); //=> get value at a position
+``` 
+
+
+
   
