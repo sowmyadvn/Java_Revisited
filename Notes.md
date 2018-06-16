@@ -25,11 +25,12 @@ List Interface extends Collection Interface. ArrayList inherits from List.
 ArrayList is a resize-able array. As ArrayLists can hold objects => For example, ArrayList<String> is how arraylists are defined. ArrayList is a class and it can have its own constructor. So, () are required.
 ```
   arrayList.contains("Sowmya"); 
-  ``` can be used to search for some value in array list. Time complexity: O(n)
+  
+``` can be used to search for some value in array list. Time complexity: O(n)
 ```
   arrayList.getIndex("Sowmya");
-  ``` => return position of value
+``` => return position of value
 ```
   arrayList.get(0); 
-  ``` => get value at a position
+``` => get value at a position
   
