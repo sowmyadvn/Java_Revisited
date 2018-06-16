@@ -36,6 +36,18 @@ can be used to search for some value in array list. Time complexity: O(n)
 ```
   arrayList.get(0); //=> get value at a position
 ``` 
+```
+arrayList.set(position,newItem); //set value at a position to a new one
+```
+```
+newArrayList.addAll(oldArrayList); //copy old to new arrayLists
+ArrayList<String> newArrayList =  new ArrayList<String>(oldArrayList);
+```
+```
+String[] array = new String[arrayList.size()];
+array = arrayList.toArray(array);    //ArrayList to String Array
+```
+
 
 
 
