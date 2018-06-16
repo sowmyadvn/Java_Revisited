@@ -21,3 +21,9 @@ Arrays.toString(array)
 prints all the array elements
 
 ## Lists and Array Lists - Lecture 81
+List Interface extends Collection Interface. ArrayList inherits from List.
+ArrayList is a resize-able array. As ArrayLists can hold objects => For example, ArrayList<String> is how arraylists are defined. ArrayList is a class and it can have its own constructor. So, () are required.
+```arrayList.contains("Sowmya"); ``` can be used to search for some value in array list. Time complexity: O(n)
+```arrayList.getIndex("Sowmya");``` => return position of value
+```arrayList.get(0);" => get value at a position
+  
