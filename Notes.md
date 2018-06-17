@@ -48,6 +48,24 @@ String[] array = new String[arrayList.size()];
 array = arrayList.toArray(array);    //ArrayList to String Array
 ```
 
+## Auto-boxing and unboxing
+Cannot create ArrayList<int> => as int is a primitive type and is not a class
+ArrayList<Integer> can be possible. 
+String is a class and not a primitive type.  
+__What is auto-boxing?__
+JAVA suppots primitive types using object-wrappers. Automatic conversion between primitive types and object wrappers is called auto-boxing
+Integer is object-wrapper class of int,
+Double for double,
+Long for long,
+Boolean for bool.
+
+```
+Integer to int: Integer.valueOf()
+int to Integer: arrayList.get(i).intValue()
+```
+Integer integer = 56; //Code is compiled when typed and auto-boxing happens at compile time
+
+
 
 
 
