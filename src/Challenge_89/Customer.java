@@ -51,4 +51,15 @@ public class Customer {
 		return new Customer(name,initialDeposit);
 	}
 
+	public static boolean addNewTransaction(double deposit) {
+		if(deposit > 0) {
+			this.transactions.add(Double.valueOf(deposit));
+			return true;
+		}
+		else
+			return false;
+
+
+	}
+
 }

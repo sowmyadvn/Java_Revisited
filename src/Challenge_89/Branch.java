@@ -25,13 +25,13 @@ public class Branch {
 	private ArrayList<Customer> customers;
 	private Scanner scanner;
 
-	public Branch(String branchName) {
+	private Branch(String branchName) {
 		this.branchName = branchName;
 		this.customers = new ArrayList<Customer>();
 		scanner = new Scanner(System.in);
 	}
 
-	public Branch(String branchName, Customer customer) {
+	private Branch(String branchName, Customer customer) {
 		this.branchName = branchName;
 		this.customers = new ArrayList<Customer>();
 		this.customers.add(customer);
@@ -56,7 +56,6 @@ public class Branch {
 	}
 
 	public static void main(String[] args) {
-		printActions();
 		bool quit = false;
 		while (!quit) {
 			System.out.println("Enter actions: ");
@@ -103,18 +102,18 @@ public class Branch {
 	public static void searchCustomer() {
 		System.out.println("Enter customer name to get transactions:");
 		String customerName = scanner.nextLine();
-		if(searchCustomer(customerName))
+		if(searchCustomer(customerName) >= 0)
 			System.out.println("Found customer transactions");
 		else
 			System.out.println("No such customer found");
 	}
 
-	public static boolean searchCustomer(String customerName) {
+	public static int searchCustomer(String customerName) {
 		for(int i = 0; i < customers.size(); i++) {
 			if(customers.get(i).getCustomerName() == customerName) 
-				return true;
+				return i;
 		}
-		return false;
+		return -1;
 	}
 
 	public static void printCustomers() {

@@ -21,29 +21,33 @@ public class Bank {
         // Add data validation.
         // e.g. check if exists, or does not exist, etc.
         // Think about where you are adding the code to perform certain actions
-        private static ArrayList<Branch>; 
+        private static ArrayList<Branch> branches; 
         private Scanner scanner = new Scanner(System.in);
 
         public static void main(String[] args) {
                
                 boolean quit = false;
                 while( !quit) {
-                        int action = printActions();
+                        printActions();
+                        int action = scanner.nextLine();
 
                         switch(action) {
                                 case 1:
                                         addBranch();
                                         break;
                                 case 2:
-                                        addCustomerToBranch();
+                                        addBranchWithCustomer();
                                         break;
                                 case 3:
-                                        addCustomerTransaction();
+                                        addCustomerToBranch();
                                         break;
                                 case 4:
-                                        searchBranch();
+                                        addCustomerTransaction();
                                         break;
                                 case 5:
+                                        searchBranch();
+                                        break;
+                                case 6:
                                         quit = true;
                                         break;
                         }
@@ -51,8 +55,74 @@ public class Bank {
         }
 
 
-        public static void addBranch() {
+        public static Branch addBranch() {
                 System.out.println("Enter new branch name");
+                String branchName = scanner.nextLine();
+                if(!searchBranch(branchName)) {
+                        Branch branch = createBranch(branchName);
+                        branches.add(branch);
+                        System.out.println("New branch created");
+                        return branch;
+                }
+                else {
+                        System.out.println("Branch already exists");
+                        return null;
+                }
 
+
+        }
+
+        public static void addBranchWithCustomer() {
+                Branch branch = addBranch();
+                branch.addNewCustomer();
+
+        }
+
+        public static void addCustomerToBranch() {
+                System.out.println("Enter branch to which customer has to be added");
+                String branchName = scanner.nextLine();
+                int position = searchBranch(branchName);
+                if( position >= 0) {
+                       Branch branch = branches.get(position);
+                       branch.addNewCustomer();
+                }
+                else {
+                        System.out.println("No such branch exists");
+                }
+        }
+
+        public static void addCustomerTransaction() {
+                System.out.println("Enter branch to which customer has to be added");
+                String branchName = scanner.nextLine();
+                int position = searchBranch(branchName);
+                if( position >= 0) {
+                        Branch branch = branches.get(position);
+                        System.out.println("Enter customer details");
+                        String customerName = scanner.nextLine();
+                        int customerPos = branch.searchCustomer(customerName);
+                        if(customerPos >= 0) {
+                                Customer customer = branch.get(customerPos);
+                                System.out.println("Enter transaction amount");
+                                double deposit = scanner.nextDouble();
+                                customer.getTransactions(customer.getCustomerName()).add(Double.valueOf(deposit));
+                        }
+               }
+        }
+ 
+        public static int searchBranch(String branchName) {
+                for(int i = 0; i < branches.size(); i++) {
+                        if(branches.get(i).getBranch().equals(branchName))
+                                return i;
+                }
+                return -1;
+        }
+
+        public void printActions() {
+                System.out.println("1- Add Branch \n"+
+                                   "2 - Add new branch with customer \n"+
+                                   "3 - Add new customer to branch \n"+
+                                   "4 - Add transaction to customer account \n"+
+                                   "5 - search Branch\n"+
+                                   "6 - Exit");
         }
 }
