@@ -63,8 +63,8 @@ Boolean for bool.
 Integer to int: Integer.valueOf()
 int to Integer: arrayList.get(i).intValue()
 ```
-Integer integer = 56; //Code is compiled when typed and auto-boxing happens at compile time
-
+Integer integer = 56; //Code is compiled when typed and auto-boxing happens at compile time  
+int myInt = integer; //again works because Java converts it to: (int myInt = integer.intValue();)  
 
 
 
