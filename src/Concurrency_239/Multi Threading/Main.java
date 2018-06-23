@@ -13,9 +13,9 @@ public class Main {
 }
 
 class CountDown {
-	
+
 		private int i; //if i is private instance variable, then both together make i zero, not two separate i values
-	public void doCountDown() {
+	public void doCountDown() { // Method synchronization using synchronized key word here
 		String color;
 		switch(Thread.currentThread().getName()) {
 			case "Thread 1": 
@@ -29,8 +29,11 @@ class CountDown {
 					break;
 		}
 
-		for(i = 10; i > 0; i--) { // If i is local variable, thread 1 and 2 create separate count downs
-			System.out.println(color + Thread.currentThread().getName()+":"+i);
+		//synchronized(color) { // no local variables, so using color doesn't help synchronization
+		synchronized(this) {
+			for(i = 10; i > 0; i--) { // If i is local variable, thread 1 and 2 create separate count downs
+				System.out.println(color + Thread.currentThread().getName()+":"+i);
+			}
 		}
  	}
 }
