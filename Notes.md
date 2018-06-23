@@ -91,12 +91,22 @@ new Thread() {
 * Several times?Dont start instance of thread multiple times. Create instance of subclass whenever thread is run.
 * We cannot reuse the same instance when already running. So, thread.start() for the second time leads to IllegalThreadStateException
 
-__Implement Runnable Interface__
+__Implement Runnable Interface:__
 * An anonymous class can also implement Runnable and pass an instance of it to constructor
 * Runnable is convenient because of lambda expressions since Java 8. More flexible and recommended.
 * Don't call run(), always call start(). Else, run() performs operations on thread that called run() method
 
 
 * Interrupted Exception if thread is woken up by another thread.
-*  
-  
+* Interrupts can occur when monitoring thread needs to terminate => 
+	1. Catch interrupted exception
+	2. Interrupt method can be called on instance of the thread
+	
+### Interrupts and Joins in threads
+``` Thread.sleep(9000) // 9 second sleep ```
+``` threadName.interrupt() //interrupts threadName ```
+Joining thread means first thread waits for second thread to terminate and continues executing then
+```threadName.join() or join(timeout); ```
+setPriority() method forces thread to run in particular order, but depends on the OS
+
+
