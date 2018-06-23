@@ -109,4 +109,40 @@ Joining thread means first thread waits for second thread to terminate and conti
 ```threadName.join() or join(timeout); ```
 setPriority() method forces thread to run in particular order, but depends on the OS
 
+### Multi-threading
+Why is the output out of order and i quite not decreasing when i is instance variable and shared between threads in the code below?  
+Heap is the application memory shared by threads, where as thread stack is not. Local variables are stored in thread stack and instance value is allocated on the heap. Instance variable is hence shared among threads. 
+
+```
+class CountDown {
+	private int i; //if i is private instance variable, then both together make i zero, not two separate i values
+	public void doCountDown() {
+		String color;
+		switch(Thread.currentThread().getName()) {
+			case "Thread 1": 
+					color = ThreadColor.ANSI_CYAN;
+					break;
+			case "Thread 2":
+					color = ThreadColor.ANSI_PURPLE;
+					break;
+			default:
+					color = ThreadColor.ANSI_RED;
+					break;
+		}
+
+		for(i = 10; i > 0; i--) { // If i is local variable, thread 1 and 2 create separate count downs
+			System.out.println(color + Thread.currentThread().getName()+":"+i);
+		}
+ }
+```
+
+
+When switching between threads, a thread can be suspended for another to resume in potential three conditions for a 'for loop':
+* Before checking the condition
+* Before decrementing and 
+* Before printing the value etc.   
+There are many others, but below are potential suspension points
+10 10 => Thread1 suspended before decrementing the value, so thread2 has 10 too  
+The skipping of values also occurs due to __thread interference__ or __race condition__. Occurs when one of the threads is writing or updating a resource.
+T2: 4 2 T1: 3 => Why did t1 print 3? There are potential suspension points within print() statement, and before t1 could prepare the method result and print, it is suspended. So, value 3 is still stored in T1. T2 completely printd 4 and 2, and T1 resumes from printing 3 and reducing it to 1.  
 
