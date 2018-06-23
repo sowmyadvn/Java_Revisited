@@ -146,3 +146,23 @@ There are many others, but below are potential suspension points
 The skipping of values also occurs due to __thread interference__ or __race condition__. Occurs when one of the threads is writing or updating a resource.
 T2: 4 2 T1: 3 => Why did t1 print 3? There are potential suspension points within print() statement, and before t1 could prepare the method result and print, it is suspended. So, value 3 is still stored in T1. T2 completely printd 4 and 2, and T1 resumes from printing 3 and reducing it to 1.  
 
+### Preventing race condition
+Possibilities:  
+* Creating two instances of the CountDown object would prevent race condition but that doesn't work in the real-world applications, as resources might be limited or data integrity needs to be maintained like Bank balance or employee record.
+* Synchronization is making sure data integrity is maintained by allowing only one thread to write or read at a time. Only then that the heap can be accessed.
+
+__Synchronization:__  
+Synchronization can be applied to methods or statements.
+__Method synchronization:__
+* __synchronized__ keyword is used to synchronize a whole method
+__Statement synchronization:__ 
+It is called as __intrinsic lock or monitor__ 
+* Only one thread can access the lock at a time
+* Statements cannot be synchronized (Intrinsic locks cannot be primitives) by primitive variables.
+* Local variables (except STRINGS) cannot be used for intrinsic locks, because a copy of local variables is created on each thread's stack leading to locks on their own copies.
+* String objects are reused within jvm. JVM uses string pools for allocation of string objects.
+* ***When using local variables, references are stored on thread stack, where as values are stored on the heap*** 
+Note:
+* **Local variables cannot be used to synchronize, as synchronization requires threads competing for the same object**
+* Only one synchronized method can run at a time and only one thread can access it even if there are three synchronized methods and 100 threads waiting to access the synchronized methods.
+* When synchronized keyword is used, a thread completes executing a method before another one can access it.
