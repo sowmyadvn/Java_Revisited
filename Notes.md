@@ -78,6 +78,7 @@ Note: Threads are scheduled to run differently in every OS and how is dependent 
 
 __Creating threads:__
 Two ways to create threads:
+__Extend Thread class__
 * Subclass of Thread Class is created and run() method of it is overriden
 * Run only once? Anonymous class
 ```
@@ -89,7 +90,13 @@ new Thread() {
 ```
 * Several times?Dont start instance of thread multiple times. Create instance of subclass whenever thread is run.
 * We cannot reuse the same instance when already running. So, thread.start() for the second time leads to IllegalThreadStateException
-* 
+
+__Implement Runnable Interface__
+* An anonymous class can also implement Runnable and pass an instance of it to constructor
+* Runnable is convenient because of lambda expressions since Java 8. More flexible and recommended.
+* Don't call run(), always call start(). Else, run() performs operations on thread that called run() method
+
+
 
 
   
