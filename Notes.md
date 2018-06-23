@@ -97,6 +97,6 @@ __Implement Runnable Interface__
 * Don't call run(), always call start(). Else, run() performs operations on thread that called run() method
 
 
-
-
+* Interrupted Exception if thread is woken up by another thread.
+*  
   
