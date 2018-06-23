@@ -67,6 +67,29 @@ Integer integer = 56; //Code is compiled when typed and auto-boxing happens at c
 int myInt = integer; //again works because Java converts it to: (int myInt = integer.intValue();)  
 
 
+## Lecture-239 Java Concurrency
+What's threading?
+* Process - Unit of execution and has its own memory space. Each instance of JVM is a process (Each JVM has Heap of its own)
+* Thread - unit of execution in process. Every app in java has minimum of one thread and is called main thread. In UI, JavaFX application thread. 
+* Memory and files shared by threads. Each thread has its own stack. 
+* Why not stick to main thread? Code within each thread executes in linear fashion, so idle time is very high. This wastes resources. Creating thread to do long running task frees main thread and other operations can be performed.Second, API sometimes requires creating another thread.
+* Progress can be made on multiple tasks at a time using multi-threading
+Note: Threads are scheduled to run differently in every OS and how is dependent on the JVM and OS used.
+
+__Creating threads:__
+Two ways to create threads:
+* Subclass of Thread Class is created and run() method of it is overriden
+* Run only once? Anonymous class
+```
+new Thread() {
+			public void run() {
+				System.out.println("Hello from the anoynmous");
+			}
+		}.start();
+```
+* Several times?Dont start instance of thread multiple times. Create instance of subclass whenever thread is run.
+* We cannot reuse the same instance when already running. So, thread.start() for the second time leads to IllegalThreadStateException
+* 
 
 
   
