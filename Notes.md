@@ -176,4 +176,19 @@ Note:
 ### Producer - consumer problem:
 __Methods that can be called only in critical section:__
 Wait, notify and notifyAll methods
+Try, finally with threads  
+Re-entrant locks   
+java.util.concurrent and java.util.concurrent.locks  
+tryLock() method  
+ExecutorService and Executors to optimize thread management. ExecutorException and InterruptedException to handle interruptions or execution issues.    
+submit() method: To get value in return from a thread executing in background. Accepts callable object, which is similar to runnable but returns the result. Return of type __Future__.   
+``` Future<String> future = ExecutorService.submit(new Callable<String>());```
+ArrayBlockingQueue class: instead of a list used in the producer and consumer. put(), peek() and take() methods block where as add() and remove() throw exceptions when cannot be performed.  
+Also, put is a thread-safe method. peek() doesn't block, but returns null when queue is empty.  => Null Pointer Exception 
+Synchronization is still required when using thread-safe methods.  
+
+### Deadlocks:
+
+
+
 
