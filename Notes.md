@@ -166,3 +166,14 @@ Note:
 * **Local variables cannot be used to synchronize, as synchronization requires threads competing for the same object**
 * Only one synchronized method can run at a time and only one thread can access it even if there are three synchronized methods and 100 threads waiting to access the synchronized methods.
 * When synchronized keyword is used, a thread completes executing a method before another one can access it.
+* Static methods can be synchronized. And when done, lock will be associated with class object. 
+* Re-entrant => if a thread acquires lock on an object and within the synchronized code, calls the method that's using the synchronized code, it can keep executing. Thread can acquire a lock it already owns. 
+* Critical section: Code that requires lock to allow multi-threading. Only one thread at a time can access critical section.
+* Thread-safe: Developer synchronized the code and we need not worry about critical sections.
+* Synchronized code must be minimal to avoid blocking threads unnecessarily. Statement synchronization is better than method synchronization
+
+
+### Producer - consumer problem:
+__Methods that can be called only in critical section:__
+Wait, notify and notifyAll methods
+
