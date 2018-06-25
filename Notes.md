@@ -66,6 +66,8 @@ int to Integer: arrayList.get(i).intValue()
 Integer integer = 56; //Code is compiled when typed and auto-boxing happens at compile time  
 int myInt = integer; //again works because Java converts it to: (int myInt = integer.intValue();)  
 
+## Interfaces vs Abstract classes
+http://mindprod.com/jgloss/interfacevsabstract.html#TABLE
 
 ## Lecture-239 Java Concurrency
 What's threading?
