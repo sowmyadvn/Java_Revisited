@@ -13,16 +13,16 @@ Generally java variables and data structures are either stored in stack or heap.
 ## final keyword:
 * A variable can only be assigned (similar to constant)
 * Can be assigned only once => we cannot change which object in the heap the variable points to
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/sowmyadvn/Java_Revisited/blob/master/src/JavaMemoryManagement/Images/finalKeyWord.jpg)
 * The one below is absolutely fine
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/sowmyadvn/Java_Revisited/blob/master/src/JavaMemoryManagement/Images/finalKeyWord_right.jpg)
 * const correctness isn’t provided by Java
 
 ## Points to note:
 When string is passed, if original value has to change, assign as String x = x.setToSomething(); If just x.setToSomething() nothing changes
 
 ## Escaping references:
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/sowmyadvn/Java_Revisited/blob/master/src/JavaMemoryManagement/Images/escapeRef.jpg)
 * If member is an object or collection, improper operations can be performed by someone accidentally.
 * Returning pointers to existing objects is called escaping reference
 
@@ -42,13 +42,13 @@ If we want to return Customer object, then it is better to use interfaces to avo
 ## Garbage eligibility:
 * Automatic in java but different for every language
 * Objects not freed lead to memory leaks
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/sowmyadvn/Java_Revisited/blob/master/src/JavaMemoryManagement/Images/GC%20eligibility.jpg)
 * Any object which cannot be reached through reference of the stack is eligible for garbage collection (Unreachable collection is garbage)
 
 ## Garbage collection:
 * gc() method suggests that JVM runs gc process
 * There is no guarantee that gc() actually does garbage collection
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/sowmyadvn/Java_Revisited/blob/master/src/JavaMemoryManagement/Images/freemem.jpg)
 * When to tell gc to run? To determine which code block is efficient
 * -Xmx10m => max heap size, -Xms10m => starting heap size
 * Java Visual VM
