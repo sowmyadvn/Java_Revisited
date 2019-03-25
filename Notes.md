@@ -192,5 +192,18 @@ Synchronization is still required when using thread-safe methods.
 ### Deadlocks:
 
 
+### Lambda expressions
+lambda expression follows the basic syntax:
 
+(parameter list) OR single_variable_without_type -> { regular lines of code ; } OR just_an_expression_without_semicolon
+A comma-separated list of formal parameters enclosed in parentheses. You can omit the data type of the parameters in a lambda expression. In addition, you can omit the parentheses if there is only one parameter.
+The arrow token: ->
+A body, which consists of a single expression or a statement block.
+If you specify a single expression, then the Java runtime evaluates the expression and then returns its value. Alternatively, you can use a return statement.
+A return statement is not an expression; in a lambda expression, you must enclose statements in braces ({}). However, you do not have to enclose a void method invocation in braces.
+Note that a lambda expression looks a lot like a method declaration, you can consider lambda expressions as anonymous methods, methods without a name. When you write a lambda expression for a functional interface, you are essentially providing an implementation of the method declared in that interface but in a very concise manner. Therefore, the lambda expression code that you write must contain all the pieces of the regular method code except the ones that the compiler can easily figure out on its own such as the parameter types, return keyword, and brackets.
+
+A lambda expression does not create a new scope for variables. Therefore, you cannot reuse the variable names that have already been used to define new variables in your argument list .
+The body of the lambda expression must return a boolean.
+If you write a return statement in your method body, you must enclose it within curly braces and include the semi-colon.
 
