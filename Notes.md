@@ -191,6 +191,74 @@ Synchronization is still required when using thread-safe methods.
 
 ### Deadlocks:
 
+### Interfaces, Inner classes and abstract classes:
+Four types of nested classes:
+* Static nested classes: used to associate class to outer class (Packaged in outer class instead of package) Cannot access non-static members of outer class
+* Non static nested classes (Inner classes) : When modeling engine, we have gearbox class and gear class.  
+* Local classes
+* Anonymous class 
+
+
+### Generics:
+* Generics ensure that unsafe and unchecked exceptions don’t occur. Prevent raw data structures from being used. Similar to templates in C++
+* // To create an instance of generic class 
+* BaseType <Type> obj = new BaseType <Type>();
+* Note: In Parameter type we can not use primitives like 'int','char' or 'double'.
+* ArrayList<Integer> list = new ArrayList<Integer>(); (or ArrayList<>();)
+* If generics are used, when raw types are used JVM throws error.
+* public class Team<T> (Here T can be any game).  Main aim of generics is to reduce redundancy in the code.
+* Team<FootBallPlayer> adelaideCrows = new Team<>(“Adelaide Crows”); //Proper assignment of Generic class
+* To restrict the type of type arguments, called bounded type parameters. In short, what can T be is controlled by Java using public class Team<T extends Player & Coach & Manager> (Coach and Manager are interfaces and Player is class first)> => T can only be one of FootballPlayer, BaseballPlayer or SoccerPlayer as declared. Because a class can extend only one class, others should be interfaces.
+* To get team board, implement Comparable<Team<T>> (Comparing teams of different games) 
+* implements Comparable<Team<T>> and implement the method compareTo
+
+
+### Naming conventions:
+* Packages -  all small case, allow only letters in the beginning or an underscore (no java keywords, add _ in the beginning)
+* Classes - CamelCase and Nouns always 
+* Interfaces - Similar to classes (Think of what classes would extend it)
+* Methods - mixedCase (verbs because they resemble function)
+* Variables - mixedCase similar to methods
+* Constants - All UPPER case , separate words with underscore
+* Type Parameters - Single CAPITAL letters (E - Element, T - Type, K - Key, V - Value, SUV etc. - 2nd, 3rd,4th types)
+Packages:
+Packages help to maintain namespace and make sure to maintain access specifiers. Packages help resolve naming conflicts in different packages. 
+
+### Scope:
+Scope of variable depends on where it is declared and accessed. General rule of thumb: between the first enclosing braces when auto/local variable  value is limited to. If there is inner class using outer class’ private variable, use outerClass.this.privateVarName to access private variable. 
+Access Modifiers:
+private, public, protected, package-private
+
+### Static vs final:
+final value can be initialized only once before constructor is called or before completing execution of it. Every final value generally is preferred to be common to class and so, it makes sense to have it static too. But, if accessing info from db and performing some calc, then it makes sense to do so in constructor (without static).
+
+Note: If constructor is private, cannot create instances. If class is final, cannot extend it
+static initialization blocks are called before constructor
+static {
+    // Example of static initialization block
+    System.out.println(“Hello World”);
+}
+
+## Collections:
+Theatre -> array list of seats 
+Collection<Seat> => can use any collection
+https://docs.oracle.com/javase/tutorial/collections/interfaces/index.html
+Tree set cannot be  declared with collection interface (Class Cast exception)
+
+### Binary Search:
+Collections.binarySearch(list, what_to_search, null);
+
+### Shallow Copy: 
+List<Theatre.Seat> seatCopy = new ArrayList<>(theatre.seats); (both point to the same memory)
+Different array lists with pointers or references to same memory location
+Collections.reverse(SeatCopy);
+Collections.shuffle(seatCopy); //pseudo randomization
+Collections.min(seatCopy);
+Collections.max(seatCopy);
+Collections.swap(seatCopy, index1, index2);
+Collections copy method:
+Collections.copy(a,b)  //doesn’t actually do deep copy
+Deep copy:
 
 ### Lambda expressions
 lambda expression follows the basic syntax:
